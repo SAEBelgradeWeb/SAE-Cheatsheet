@@ -130,6 +130,10 @@ git branch --all
 // Completely reset the reporitory to the default state. Reset all changed files and clear all untracked files.
 git reset --hard HEAD
 git clean -xdf
+
+//Force pull from GitHub - it will overwrite all local changes
+git fetch --all
+git reset --hard origin/master
                 </pre>
 
 <p>

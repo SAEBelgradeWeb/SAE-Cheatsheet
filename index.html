@@ -69,6 +69,30 @@ D:
 ls [-l] 
 // Remove a directory with all the contents
 rm -rf
+
+// You can create a custom bash command by editing .bash_profile dotfile on Mac
+nano ~/.bash_profile
+// The syntax is as follows:
+alias commandName="cd ~/Sites/srb-ag-website/frontend-src/"
+// Oh wait, you can also create functions:
+functionName() {
+	cd ~/Sites/SAE
+	mkdir jovan
+    sudo pfctl -f /etc/pf.conf
+}
+// But that is not all. You can use this to override default behavior of POSIX commands:
+// 1. Always list directory contents when entering a dir.
+// 2. Always enter a directory when you create it.
+// 3. Shortcut to edit hosts file fast.
+// 4. Clear DNS cache after editing hosts.
+// 5. You can hijack brew commands to shorten them.
+cd() { builtin cd "$@"; ls -l; }
+mkdir() { command mkdir "$@"; cd "$@"; pwd; }
+alias clear="clear && printf '\e[3J'"
+alias hosts="sudo nano /etc/hosts"
+alias hosts.cache="sudo killall -HUP mDNSResponder"
+restart() { brew services restart "$@"; }
+
                 </pre>
 
         <h4><a name="shortcuts" href="#shortcuts">Shortcuts (Mac | Windows)</a></h4>
@@ -87,7 +111,23 @@ CMD + A | CTRL + A
 
         <h4><a name="git" href="#git">Git & Github</a> <a href="https://services.github.com/on-demand/downloads/github-git-cheat-sheet.pdf" title="Github Cheat Sheet" target="_blank"><i class="icon-file-text"></i></a></h4>
         <pre class="prettyprint lang-php">
+// Basic Git commit example
+git add ./frontend-src/main.js
+git commit -m"Replace ES5 with ES6/7 syntax"
+git push
 
+// Soft fetch all changes to all branches. Does not actually pull any code from git, just checks whether there were any changes upstream.
+git fetch --all
+
+// Git pull is always better with --rebase. But you must be careful that you do not have any non-pushed files. If so, use just `git pull`
+git pull --rebase
+
+// Show all git branches
+git branch --all
+
+// Completely reset the reporitory to the default state. Reset all changed files and clear all untracked files.
+git reset --hard HEAD
+git clean -xdf
                 </pre>
 
       </div>

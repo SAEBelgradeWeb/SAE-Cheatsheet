@@ -194,6 +194,32 @@ php artisan db:seed --class=PostTableSeeder
 php artisan migrate:fresh --seed
             </pre>
       </div>
+      <div class="large-4 columns code-column">
+        <h4><a name="laravel" href="#laravel">Composer</a></h4>
+        <pre class="prettyprint lang-php">
+
+// Adds required packages to your composer.json and installs them.
+composer require vendor-name/package-name
+
+// Parses the composer.json file and downloads the needed dependencies.
+composer install
+
+// Updates your dependencies to the latest version, and updates the composer.lock file.
+composer update
+
+// In case you get a warning message: "The lock file is not up to date..." you can just run the update --lock command to update the lock file without upgrading any vendors.
+composer update --lock
+
+// If you need to update the autoloader because of new classes in a classmap package for example, you can use "dump-autoload" to do that without having to go through an install or update.
+composer dump-autoload
+
+// Use --optimize to convert PSR-0/4 autoloading to classmap to get a faster autoloader. This is strongly recommended for production (you can get a 20% boost), but can take a bit of time to run so it is currently not done by default.
+composer dump-autoload --optimize
+
+// Use to update composer
+composer self-update
+        </pre>
+    </div>
 
 </div>
 <script src="assets/js/jquery.js"></script>

@@ -129,6 +129,15 @@ git branch --all
 // Completely reset the reporitory to the default state. Reset all changed files and clear all untracked files.
 git reset --hard HEAD
 git clean -xdf
+
+// Git Reflog is a real life-saver. When working on project with multiple people, it is not that hard to erase history or reset the wrong commits. Git Reflog is a local history of changes stored on your computer. So even if you push something that you shouldn't, you can simply ask reflog to return to the previous state - like a safety net.
+// Issue the reflog command, and try to find a hash that matches with the previous state.
+git reflog
+git reset --hard $HASH
+git push -f
+
+// Git interactive rebase allows you to retroactively change history up until a certain point.
+git rebase -i $HASH
                 </pre>
 
 Gitignoring files after you have already pushed them: <a href="https://medium.com/homullus/gitignoring-files-after-committing-them-c37da0d9eb74" title="Gitignoring after push" target="_blank"><i class="icon-file-text"></i></a>

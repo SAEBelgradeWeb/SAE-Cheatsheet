@@ -108,8 +108,35 @@ CMD + R | CTRL + R
 CMD + SHIFT + R | CTRL + SHIFT + R
 //Select all
 CMD + A | CTRL + A
-                </pre>
 
+        <h4>Sublime Text 3 Additional Shortcuts (Windows | Mac)</h4>
+// Select Line 
+CTRL + L | CMD + L
+// Select Word
+CTRL + D | CMD + D
+// Multi Select Editing
+CTRL + CLICK | CMD + CLICK
+// Layout Column Num.
+ALT + SHIFT + 1/4 | CMD + ALT + 1/4
+// Find
+CTRL + F | CMD + F
+// Replace
+CTRL + H | CMD + ALT + F
+// Comment/Uncomment Line
+CTRL + / | CMD + /
+// Block Comment
+CTRL + SHIFT + / | CMD + ALT + /
+// Indent Current Line
+CTRL + ] | CMD + ]
+// Unindent Current Line
+CTRL + [ | CMD + [
+// Paste with Proper Indentation
+CTRL + SHIFT + V | CMD + SHIFT + V
+//  Duplicate Line(s)
+CTRL + SHIFT + D | CMD + SHIFT + D
+                </pre>
+	</div>
+	<div class="large-4 columns code-column">
         <h4><a name="git" href="#git">Git & Github</a> <a href="https://services.github.com/on-demand/downloads/github-git-cheat-sheet.pdf" title="Github Cheat Sheet" target="_blank"><i class="icon-file-text"></i></a></h4>
         <pre class="prettyprint lang-php">
 // Basic Git commit example
@@ -130,6 +157,10 @@ git branch --all
 git reset --hard HEAD
 git clean -xdf
 
+//Force pull from GitHub - it will overwrite all local changes
+git fetch --all
+git reset --hard origin/master
+
 // Git Reflog is a real life-saver. When working on project with multiple people, it is not that hard to erase history or reset the wrong commits. Git Reflog is a local history of changes stored on your computer. So even if you push something that you shouldn't, you can simply ask reflog to return to the previous state - like a safety net.
 // Issue the reflog command, and try to find a hash that matches with the previous state.
 git reflog
@@ -140,9 +171,89 @@ git push -f
 git rebase -i $HASH
                 </pre>
 
+<p>
 Gitignoring files after you have already pushed them: <a href="https://medium.com/homullus/gitignoring-files-after-committing-them-c37da0d9eb74" title="Gitignoring after push" target="_blank"><i class="icon-file-text"></i></a>
+</p>
+<p>
+Connecting to GitHub with SSH keys: <a href="https://help.github.com/articles/connecting-to-github-with-ssh/" title="Connecting to GitHub with SSH keys" target="_blank"><i class="icon-file-text"></i></a>
+</p>
 
       </div>
+
+      <div class="large-4 columns code-column">
+            <h4><a name="laravel" href="#laravel">Laravel</a></h4>
+            <pre class="prettyprint lang-php">
+// Download Laravel Installer using Composer
+composer global require "laravel/installer"
+
+// Create fresh Laravel installation in the directory you specify. In this case directory named blog will be created and it will contain fresh Laravel installation with all of Laravel's dependencies alredy installed.
+laravel new blog
+
+// View a list of all available Artisan commands.
+php artisan
+
+// Interact with your entire Laravel application via command line using Tinker.
+php artisan tinker
+
+// Run database migrations.
+php artisan migrate
+
+// Rollback the last database migration (undo the last database migration).
+php artisan migrate:rollback
+
+// Drop all tables and re-run all migrations.
+php artisan migrate:fresh
+
+// Create migration. In this example create_posts_table is the name of the migration and --create option indicates that this migration will be creating a new table called posts.
+php artisan make:migration create_posts_table --create=posts
+
+// Create migration. In this example add_categories_to_posts_table is the name of the migration and --table option indicates the name of the table where categories will be added. 
+php artisan make:migration add_categories_to_posts_table --table=posts
+
+// Create a Model instance. In this example Post is the name of the model.
+php artisan make:model Post
+
+// Create a Model instance and generate a database migration when the Model is generated.
+php artisan make:model Post -m
+
+// Create a new seeder class.
+php artisan make:seeder
+
+// Seed the database.
+php artisan db:seed
+
+// Seed the database. In this example --class option specifies a specific seeder class to run individually.
+php artisan db:seed --class=PostTableSeeder
+
+// Seed the database while also running a migrate:fresh, which will drop all of the tables and re-run all of migrations.  
+php artisan migrate:fresh --seed
+            </pre>
+   
+        <h4><a name="composer" href="#composer">Composer</a></h4>
+        <pre class="prettyprint lang-php">
+
+// Adds required packages to your composer.json and installs them.
+composer require vendor-name/package-name
+
+// Parses the composer.json file and downloads the needed dependencies.
+composer install
+
+// Updates your dependencies to the latest version, and updates the composer.lock file.
+composer update
+
+// In case you get a warning message: "The lock file is not up to date..." you can just run the update --lock command to update the lock file without upgrading any vendors.
+composer update --lock
+
+// If you need to update the autoloader because of new classes in a classmap package for example, you can use "dump-autoload" to do that without having to go through an install or update.
+composer dump-autoload
+
+// Use --optimize to convert PSR-0/4 autoloading to classmap to get a faster autoloader. This is strongly recommended for production (you can get a 20% boost), but can take a bit of time to run so it is currently not done by default.
+composer dump-autoload --optimize
+
+// Use to update composer
+composer self-update
+        </pre>
+    </div>
 
 </div>
 <script src="assets/js/jquery.js"></script>
